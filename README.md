@@ -1,5 +1,5 @@
 # EMST
-[![Build Status](https://travis-ci.org/lithom/EMST.jl.svg?branch=master)](https://travis-ci.org/lithom/EMST.jl) [![Build status](https://ci.appveyor.com/api/projects/status/rutjqeq6bbl7271c?svg=true)](https://ci.appveyor.com/project/lithom/emst-jl)
+[![Build Status](https://travis-ci.org/lithom/EMST.jl.svg?branch=master)](https://travis-ci.org/lithom/EMST.jl) [![Build status](https://ci.appveyor.com/api/projects/status/rutjqeq6bbl7271c?svg=true)](https://ci.appveyor.com/project/lithom/emst-jl)   [![Coverage Status](https://coveralls.io/repos/github/lithom/EMST.jl/badge.svg?branch=master)](https://coveralls.io/github/lithom/EMST.jl?branch=master)
 
 
 This package provides an implementation of the algorithm presented in [1] to compute euclidean minimum spanning trees.
