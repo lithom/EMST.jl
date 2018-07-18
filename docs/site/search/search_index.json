@@ -1,0 +1,19 @@
+{
+    "docs": [
+        {
+            "location": "/", 
+            "text": "EMST\n\n\n#\n\n\nEMST.compute_emst\n \n \nFunction\n.\n\n\ncompute_emst(data::Array{Float64,2};nmin::Int64=64)\n\n\nComputes EMST for the given data (where columns are samples). nmin is the max number of elements in kd-tree node.\n\n\n\n\nExample usage\n\n\nusing\n \nEMST\n\n\nx\n \n=\n \nrand\n(\n2\n,\n2000\n)\n \n#\n \nx\n \n=\n \nrand\n(\nd\n,\nn\n)\n\n\nx_emst\n    \n=\n \nEMST\n.\ncompute_emst\n(\nx\n)\n\n\n\n#\n \nand\n \nplot\n..\n\n\nusing\n \nPlots\n\n\nusing\n \nGR\n\n\n\nfunction\n \nplot_emst_2d\n(\nx\n,\nedges\n)\n\n    \nPlots\n.\ngr\n()\n\n    \nPlots\n.\nplot\n()\n\n    \nPlots\n.\nscatter\n!\n(\nx\n[\n1\n,:\n]\n,\nx\n[\n2\n,:\n]\n,\nms\n=\n2.0\n,\nmarker\n=\n(\nstroke\n(\n0\n,\n:\ngray\n)))\n\n    \nfor\n \nzr\n \nin\n \n1\n:\nsize\n(\nedges\n,\n1\n)\n\n        \nPlots\n.\nplot\n!\n(\n \nx\n[\n1\n,\nedges\n[\nzr\n,:\n]\n]\n \n,\n \nx\n[\n2\n,\nedges\n[\nzr\n,:\n]\n]\n \n)\n\n    \nend\n\n    \nPlots\n.\nscatter\n!\n()\n \n#\n \nfor\n \nsome\n \nreason\n \nwith\n \nthis\n \nthe\n \nplot\n \nshows\n \nim\n \njuno\n..\n\n\nend\n\n\n\nplot_emst_2d\n(\nx\n,\nx_emst\n)", 
+            "title": "Introduction"
+        }, 
+        {
+            "location": "/#emst", 
+            "text": "#  EMST.compute_emst     Function .  compute_emst(data::Array{Float64,2};nmin::Int64=64)  Computes EMST for the given data (where columns are samples). nmin is the max number of elements in kd-tree node.", 
+            "title": "EMST"
+        }, 
+        {
+            "location": "/#example-usage", 
+            "text": "using   EMST  x   =   rand ( 2 , 2000 )   #   x   =   rand ( d , n )  x_emst      =   EMST . compute_emst ( x )  #   and   plot ..  using   Plots  using   GR  function   plot_emst_2d ( x , edges ) \n     Plots . gr () \n     Plots . plot () \n     Plots . scatter ! ( x [ 1 ,: ] , x [ 2 ,: ] , ms = 2.0 , marker = ( stroke ( 0 , : gray ))) \n     for   zr   in   1 : size ( edges , 1 ) \n         Plots . plot ! (   x [ 1 , edges [ zr ,: ] ]   ,   x [ 2 , edges [ zr ,: ] ]   ) \n     end \n     Plots . scatter ! ()   #   for   some   reason   with   this   the   plot   shows   im   juno ..  end  plot_emst_2d ( x , x_emst )", 
+            "title": "Example usage"
+        }
+    ]
+}

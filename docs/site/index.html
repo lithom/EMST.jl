@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Description">
+  <meta name="author" content="lithom">
+  <link rel="shortcut icon" href="./img/favicon.ico">
+  <title>Introduction - EMST</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="./css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="./css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="./css/highlight.css">
+  <link href="./assets/Documenter.css" rel="stylesheet">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Introduction";
+    var mkdocs_page_input_path = "index.md";
+    var mkdocs_page_url = "/";
+  </script>
+  
+  <script src="./js/jquery-2.1.1.min.js"></script>
+  <script src="./js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="./js/highlight.pack.js"></script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="." class="icon icon-home"> EMST</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="./search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1 current">
+		
+    <a class="current" href=".">Introduction</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l2"><a href="#emst">EMST</a></li>
+    
+
+    <li class="toctree-l2"><a href="#example-usage">Example usage</a></li>
+    
+
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href=".">EMST</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Introduction</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/lithom/EMST/edit/master/docs/index.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="emst">EMST</h1>
+<p><a id='EMST.compute_emst' href='#EMST.compute_emst'>#</a>
+<strong><code>EMST.compute_emst</code></strong> &mdash; <em>Function</em>.</p>
+<p>compute_emst(data::Array{Float64,2};nmin::Int64=64)</p>
+<p>Computes EMST for the given data (where columns are samples). nmin is the max number of elements in kd-tree node.</p>
+<p><a id='Example-usage-1'></a></p>
+<h1 id="example-usage">Example usage</h1>
+<div class="codehilite"><pre><span class="nx">using</span> <span class="nx">EMST</span>
+<span class="nx">x</span> <span class="o">=</span> <span class="nx">rand</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2000</span><span class="p">)</span> <span class="err">#</span> <span class="nx">x</span> <span class="o">=</span> <span class="nx">rand</span><span class="p">(</span><span class="nx">d</span><span class="p">,</span><span class="nx">n</span><span class="p">)</span>
+<span class="nx">x_emst</span>    <span class="o">=</span> <span class="nx">EMST</span><span class="p">.</span><span class="nx">compute_emst</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span>
+
+<span class="err">#</span> <span class="nx">and</span> <span class="nx">plot</span><span class="p">..</span>
+<span class="nx">using</span> <span class="nx">Plots</span>
+<span class="nx">using</span> <span class="nx">GR</span>
+
+<span class="kd">function</span> <span class="nx">plot_emst_2d</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span><span class="nx">edges</span><span class="p">)</span>
+    <span class="nx">Plots</span><span class="p">.</span><span class="nx">gr</span><span class="p">()</span>
+    <span class="nx">Plots</span><span class="p">.</span><span class="nx">plot</span><span class="p">()</span>
+    <span class="nx">Plots</span><span class="p">.</span><span class="nx">scatter</span><span class="o">!</span><span class="p">(</span><span class="nx">x</span><span class="cp">[</span><span class="mi">1</span><span class="p">,:</span><span class="cp">]</span><span class="p">,</span><span class="nx">x</span><span class="cp">[</span><span class="mi">2</span><span class="p">,:</span><span class="cp">]</span><span class="p">,</span><span class="nx">ms</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span><span class="nx">marker</span><span class="o">=</span><span class="p">(</span><span class="nx">stroke</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="o">:</span><span class="nx">gray</span><span class="p">)))</span>
+    <span class="k">for</span> <span class="nx">zr</span> <span class="k">in</span> <span class="mi">1</span><span class="o">:</span><span class="nx">size</span><span class="p">(</span><span class="nx">edges</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+        <span class="nx">Plots</span><span class="p">.</span><span class="nx">plot</span><span class="o">!</span><span class="p">(</span> <span class="nx">x</span><span class="cp">[</span><span class="mi">1</span><span class="p">,</span><span class="nx">edges</span><span class="err">[</span><span class="nx">zr</span><span class="p">,:</span><span class="cp">]</span><span class="p">]</span> <span class="p">,</span> <span class="nx">x</span><span class="cp">[</span><span class="mi">2</span><span class="p">,</span><span class="nx">edges</span><span class="err">[</span><span class="nx">zr</span><span class="p">,:</span><span class="cp">]</span><span class="p">]</span> <span class="p">)</span>
+    <span class="nx">end</span>
+    <span class="nx">Plots</span><span class="p">.</span><span class="nx">scatter</span><span class="o">!</span><span class="p">()</span> <span class="err">#</span> <span class="k">for</span> <span class="nx">some</span> <span class="nx">reason</span> <span class="kd">with</span> <span class="k">this</span> <span class="nx">the</span> <span class="nx">plot</span> <span class="nx">shows</span> <span class="nx">im</span> <span class="nx">juno</span><span class="p">..</span>
+<span class="nx">end</span>
+
+<span class="nx">plot_emst_2d</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span><span class="nx">x_emst</span><span class="p">)</span>
+</pre></div>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/lithom/EMST/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+      
+    </span>
+</div>
+    <script>var base_url = '.';</script>
+    <script src="./js/theme.js"></script>
+      <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+      <script src="./assets/mathjaxhelper.js"></script>
+      <script src="./search/require.js"></script>
+      <script src="./search/search.js"></script>
+
+</body>
+</html>
+
+<!--
+MkDocs version : 0.17.5
+Build Date UTC : 2018-07-18 10:48:31
+-->
