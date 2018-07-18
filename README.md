@@ -3,7 +3,9 @@
 This package provides an implementation of the algorithm presented in [1] to compute euclidean minimum spanning trees.
 
 Usage is very simple:
+```
   edges = compute_emst(x)
+```
 
 returns the edges of the emst of the dataset x
 x is a (d x n) matrix
