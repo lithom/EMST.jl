@@ -174,9 +174,10 @@ end
 Computes EMST for the given data (where columns are samples).
 nmin is the max number of elements in kd-tree node.
 """
-function compute_emst(data::Array{Float64,2};nmin::Int64=64)
+function compute_emst(data::Array{Float64,2};nmin::Int=64)
+    nmin64 = Int64(nmin)
     root = kdtree(data)
-    kdtree_split!(root,nmin)
+    kdtree_split!(root,nmin64)
     edges = dtb(root,IntDisjointSets(size(data,2)))
     return EMST.to_matrix( collect(edges) )
 end
