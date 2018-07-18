@@ -2,6 +2,9 @@
 using DataStructures
 using Distances
 
+using Statistics
+using Random
+
 import Base.isequal
 import Base.hash
 
@@ -229,9 +232,9 @@ Components are identified by the root of the component
 C_dcq : component distances to candidate edges
 C_e   : component candidate edges (comp i candidate edge is C_e[:,i])
 """
+function fcn(q::DTBNode,r::DTBNode,e::IntDisjointSets , C_dcq::Dict{Int64,Float64} , C_e::Dict{Int64,MyE} )
 #function fcn(q::DTBNode,r::DTBNode,e::IntDisjointSets , C_dcq::Dict{Int64,Float64} , C_e::Dict{Int64,Tuple{Int64,Int64}} )
 #function fcn(q::DTBNode,r::DTBNode,e::IntDisjointSets , C_dcq::Dict{Int64,Float64} , C_e::Dict{Int64,MyE} , hashmap_QvsR::Dict{Tuple{DTBNode,DTBNode},Array{Float64,2}})
-function fcn(q::DTBNode,r::DTBNode,e::IntDisjointSets , C_dcq::Dict{Int64,Float64} , C_e::Dict{Int64,MyE} )
 
     # check all in same component
     onecomp::Bool  = true
