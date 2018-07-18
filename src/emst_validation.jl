@@ -5,7 +5,7 @@
 
 Checks whether the computed EMST contains the nearest neighbor edges.
 """
-function verify_emst(x::Array{Float64,2},e::Array{Int64,2},n_checks::Int64)
+function verify_emst(x::Array{Float64,2},e::Array{Int64,2},n_checks::Int)
     n = min(n_checks,size(x,2))
     idx_rand = randperm( size(x,2) )[1:n]
     return verify_emst(x,e, idx_rand )
@@ -17,7 +17,7 @@ end
 Checks whether the computed EMST contains the nearest neighbor edges for the
 given indeces.
 """
-function verify_emst(x::Array{Float64,2},e::Array{Int64,2},idx_check::Vector{Int64})
+function verify_emst(x::Array{Float64,2},e::Array{Int64,2},idx_check::Vector{Int})
     # create edge set
     es::Set{Set{Int64}} = Set{Set{Int64}}()
     for zi=1:size(e,1); push!(es,Set([e[zi,1],e[zi,2]])); end
