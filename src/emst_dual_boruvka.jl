@@ -108,7 +108,8 @@ To build the tree use:
 """
 function kdtree(xx::Array{Float64,2})
     #root = DTBNode(xx,-1,NaN,nothing,nothing)
-    root = DTBNode(0,xx,collect(1:size(xx,2)),fill!(ones(size(xx,1)),-Inf),fill!(ones(size(xx,1)),Inf),Inf)
+    #root = DTBNode(Int64(0),xx,collect(1:size(xx,2)),fill!(ones(size(xx,1)),-Inf),fill!(ones(size(xx,1)),Inf),Inf)
+    root = DTBNode(Int64(0),xx,collect(Int64(1):Int64(size(xx,2))),fill!(ones(size(xx,1)),-Inf),fill!(ones(size(xx,1)),Inf),Inf)
     return root
 end
 
