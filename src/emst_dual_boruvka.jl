@@ -2,9 +2,6 @@
 using DataStructures
 using Distances
 
-using Statistics
-using Random
-
 import Base.isequal
 import Base.hash
 
