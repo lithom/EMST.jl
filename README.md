@@ -16,3 +16,6 @@ returns the edges of the emst of the dataset x
 
 [1] March, William B., Parikshit Ram, and Alexander G. Gray. "Fast euclidean minimum spanning tree: algorithm, analysis, and applications." Proceedings of the 16th ACM SIGKDD international conference on Knowledge discovery and data mining. ACM, 2010.
 http://www.mlpack.org/papers/emst.pdf
+
+
+Thomas Liphardt, 2018
