@@ -1,6 +1,7 @@
 
 using DataStructures
 using Distances
+using Statistics
 
 import Base.isequal
 import Base.hash
@@ -34,7 +35,7 @@ function hash(a::MyE)
     return xor( hash(a.a) , hash(a.b) )
 end
 function to_matrix(ee::Vector{MyE})
-    m::Array{Int64,2} = Array{Int64}(length(ee),2)
+    m::Array{Int64,2} = Array{Int64}(undef, length(ee),2)
     for zi=1:length(ee); m[zi,1] = ee[zi].a; m[zi,2] = ee[zi].b; end
     return m
 end
@@ -129,10 +130,10 @@ function kdtree_split!( node::DTBNode, nmin::Int64)
         return node
     end
 
-    mind = minimum(node.data,2)
-    maxd = maximum(node.data,2)
+    mind = minimum(node.data, dims=2)
+    maxd = maximum(node.data, dims=2)
     ds   = findmax( maxd-mind )
-    ds   = ds[2]
+    ds   = ds[2][1]
     #println("$ds")
     vs   = median(node.data[ds,:])
     #println("$vs")
@@ -263,7 +264,7 @@ function fcn(q::DTBNode,r::DTBNode,e::IntDisjointSets , C_dcq::Dict{Int64,Float6
         #n_dQ = -Inf
         n_dQ::Float64 = q.dQ
 
-        all_d_qr = Distances.pairwise(Euclidean(),q.data,r.data)
+        all_d_qr = Distances.pairwise(Euclidean(),q.data,r.data, dims = 2)
 
         # --> hashing these values does not really speed up things..
         #     and it uses tons of memory, such that fancier handling of

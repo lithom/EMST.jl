@@ -1,3 +1,4 @@
+using Random
 
 
 """
@@ -26,9 +27,9 @@ function verify_emst(x::Array{Float64,2},e::Array{Int64,2},idx_check::Vector{Int
     ok = true
     for zi in 1:length(idx_check)
         ix = idx_check[zi]
-        xd = sum( ( broadcast(-,x[:,ix],x) ).^2 , 1 )
+        xd = sum( ( broadcast(-,x[:,ix],x) ).^2 , dims=1 )
         xd[ix] = Inf
-        i_min = findmin(xd)[2]
+        i_min = findmin(xd)[2][2]
         if( sum( xd.==xd[i_min] )>1 )
             println("WARNING: Equidistant vertices discovered..")
             ok=false
